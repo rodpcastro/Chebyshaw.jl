@@ -1,0 +1,7 @@
+name = "Chebyshaw"
+uuid = "8daffda2-858b-4296-b9dd-359a97e818af"
+authors = ["Rodrigo Castro <code@rpc.aleeas.com>"]
+version = "0.0.1"
+
+[compat]
+julia = "1.12"
