@@ -8,7 +8,7 @@ using Chebyshaw: ChebyshevSeries, TransformedChebyshevSeries, ChebyshevCluster, 
 
 
 # This script contais the tests for the Chebyshaw package. Coefficients for Chebyshev series
-# used in this test file are generate by the script at test_coefficients.jl
+# used in this test file are generate by the script test_coefficients.jl
 
 # Note: Chebyshev series must have a least order 4 in each dimension, which means that the
 # array of coefficients must have have at least size 5 in each dimension. The reason behind

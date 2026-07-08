@@ -1,7 +1,7 @@
 #!/usr/bin/env julia
 
 # The objective of this script is to generate the coefficients of the Chebyshev series
-# used for the testing of the Chebyshaw package.
+# used for testing.
 
 import Pkg
 Pkg.activate(@__DIR__)
