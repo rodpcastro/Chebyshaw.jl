@@ -7,8 +7,10 @@ using JET
     @testset "Code quality (Aqua.jl)" begin
         Aqua.test_all(Chebyshaw)
     end
+
     @testset "Code linting (JET.jl)" begin
-        JET.test_package(Chebyshaw; target_defined_modules = true)
+        JET.test_package(Chebyshaw; target_modules=(Chebyshaw,))
     end
-    # Write your tests here.
+
+    include("test_chebyshaw.jl")
 end
