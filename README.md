@@ -12,16 +12,14 @@
 # Chebyshaw
 **Chebyshaw** is a [Julia] package that evaluates a *Chebyshev* series of arbitrary order using the *Clenshaw* (1995) algorithm. The series derivatives of first and second order are obtained with an extension of the algorithm derived by *Skrzipek* (1998).
 
-Chebyshaw does not intend to be a complete package in the field of polynomial interpolation and it was developed mainly to support other Julia projects created by the [author][rodpcastro], specially those that require the computation of a *Chebyshev* series second order derivative[^1].
+Chebyshaw does not intend to be a complete package in the field of polynomial interpolation and it was developed mainly to support other Julia projects created by the [author][rodpcastro], specially those that require the computation of a *Chebyshev* series second order derivative.
 
-[!NOTE]
-**Chebyshaw does not compute the Chebyshev coefficients**. For that, the package [FastChebInterp.jl] is recommended.
+> [!NOTE]
+> **Chebyshaw does not compute the Chebyshev coefficients**. For that, the package [FastChebInterp.jl] is recommended.
 
 ## References
 1. C. W. Clenshaw. 1955. A note on the summation of Chebyshev series. Math. Comp. 9 (July 1955), 118–120. https://doi.org/10.1090/S0025-5718-1955-0071856-0
 2. M. R. Skrzipek. 1998. Polynomial evaluation and associated polynomials. Numer. Math. 79, 4 (June 1998), 601–613. https://doi.org/10.1007/s002110050354
-
-[^1]: [FastChebInterp.jl] v1.3.1 is not able to compute second order derivatives efficiently.
 
 <!--Links-->
 [Docs-stable]: https://rodpcastro.github.io/Chebyshaw.jl/stable/
