@@ -145,17 +145,19 @@ end
 
 @testset "Reduce 3-D Chebyshev series" begin
     a = Float64[0.25 * (i - 1) * (j + 1) * (k + 3) for i in 0:6, j in 0:4, k in 0:5]
-    x = SA[-0.5, 0.5, -0.5]
 
     cs3D = ChebyshevSeries(a, SA[-1.0, -1.0, -1.0], SA[1.0, 1.0, 1.0])
     idx3D = rand((1,2,3))
+    x3D = SA[-0.5, 0.5, -0.5]
 
-    cs2D = reduce(cs3D, x[idx3D]; dim=idx3D)
+    cs2D = reduce(cs3D, x3D[idx3D]; dim=idx3D)
     idx2D = rand((1,2))
+    x2D = deleteat(x3D, idx3D)
 
-    cs1D = reduce(cs2D, x[idx2D]; dim=idx2D)
+    cs1D = reduce(cs2D, x2D[idx2D]; dim=idx2D)
+    x1D = deleteat(x2D, idx2D)
 
-    @test reduce(cs1D, x[1]) == 9
+    @test reduce(cs1D, x1D[1]) == 9
 end
 
 
