@@ -46,6 +46,14 @@ end
 end
 
 
+@testset "Dim normalize" begin
+    cs = ChebyshevSeries(zeros(2, 2, 2), SA[-2.0, 3.0, 0.0], SA[-1.0, 5.0, 2.0])
+    @test normalize(cs, -2.0; dim=1) == -1
+    @test normalize(cs, 4.0; dim=2) == 0.0
+    @test normalize(cs, 2.0; dim=3) == 1
+end
+
+
 @testset "1-D contains" begin
     cs = ChebyshevSeries(zeros(2), SA[-2.0], SA[4.0])
     @test contains(cs, SA[2.0])
@@ -66,6 +74,15 @@ end
     @test contains(cs, SA[1.0, 0.0, 3.2])
     @test contains(cs, SA[1.4, 0.2, 3.1])
     @test !contains(cs, SA[0.5, 0.3, 3.55])
+end
+
+
+@testset "Dim contains" begin
+    cs = ChebyshevSeries(zeros(2, 2, 2), SA[0.5, -1.2, 3.0], SA[1.5, 0.3, 3.5])
+    @test contains(cs, 1.0; dim=1)
+    @test contains(cs, 0.2; dim=2)
+    @test contains(cs, 3.1; dim=3)
+    @test !contains(cs, 3.55; dim=3)
 end
 
 
@@ -123,6 +140,22 @@ end
     @test clenshaw(a, x) == 9
     @test gradient_clenshaw(a, x) == (9, -45, 18, 54)
     @test hessian_clenshaw(a, x) == (9, -45, -702, 18, -90, -150, 54, -270, 108, -492)
+end
+
+
+@testset "Reduce 3-D Chebyshev series" begin
+    a = Float64[0.25 * (i - 1) * (j + 1) * (k + 3) for i in 0:6, j in 0:4, k in 0:5]
+    x = SA[-0.5, 0.5, -0.5]
+
+    cs3D = ChebyshevSeries(a, SA[-1.0, -1.0, -1.0], SA[1.0, 1.0, 1.0])
+    idx3D = rand((1,2,3))
+
+    cs2D = reduce(cs3D, x[idx3D]; dim=idx3D)
+    idx2D = rand((1,2))
+
+    cs1D = reduce(cs2D, x[idx2D]; dim=idx2D)
+
+    @test reduce(cs1D, x[1]) == 9
 end
 
 
