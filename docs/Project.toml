@@ -3,4 +3,5 @@ Chebyshaw = "8daffda2-858b-4296-b9dd-359a97e818af"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 
 [compat]
+Chebyshaw = "0.0.1"
 Documenter = "1.17.0"
